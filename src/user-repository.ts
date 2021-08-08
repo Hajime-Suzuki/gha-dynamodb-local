@@ -6,7 +6,7 @@ type UserEntity = {
   userId: string
 }
 
-interface UserRepository {
+export interface UserRepository {
   getById: (userId: string) => Promise<Maybe<UserEntity>>
 }
 export const getUserRepository = (client: DocumentClient) => {
