@@ -1,0 +1,31 @@
+service: EventBridge-test
+
+functions:
+  name: "get-user"
+  handler: src/main.handler
+
+provider:
+  name: aws
+  region: "eu-central-1"
+  stage: ${opt:stage, 'dev'}
+  runtime: nodejs14.x
+  apiGateway:
+    shouldStartNameWithService: true
+  lambdaHashingVersion: 20201221
+custom:
+  serverless-offline:
+    httpPort: 4000
+
+  webpack:
+    packager: yarn
+    webpackConfig: webpack.config.ts
+    includeModules:
+      forceExclude:
+        - aws-sdk
+
+package:
+  individually: true
+
+plugins:
+  - serverless-webpack
+  - serverless-offline
