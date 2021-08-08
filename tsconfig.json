@@ -1,6 +1,11 @@
 {
   "compilerOptions": {
-    "baseUrl": "src",
+    "baseUrl": "./",
+    "paths": {
+      "src/*": [
+        "src/*"
+      ]
+    },
     "module": "commonjs",
     "moduleResolution": "node",
     "noImplicitAny": true,
